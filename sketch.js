@@ -13,6 +13,9 @@ function preload() {
 	mapimg= loadImage('https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/85.3240,27.7172,10,0,0/1024x512?access_token=pk.eyJ1IjoiYWthc2hhZGhpa2FyaSIsImEiOiJjaXpkemZ6dDEyODdiMnFwOXlrOTAzeWZxIn0.jqawgQSE-GrEe1GH7axGwQ');
 }
 
+
+//function mercX and mercY are based on web mercrator formula
+
 function mercX(lon) {
 	lon = radians(lon);
 	var a = (256/PI) * pow(2,zoom);
