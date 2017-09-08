@@ -52,7 +52,7 @@ function setup() {
 		var x = mercX(lon) - cx;
 		var y = mercY(lat) - cy;
 
-		if(data[4]<8) {
+		if(data[4]<6.5) {
 
 			fill(0,128,0, 200); //green
 			ellipse(x,y,5,5);
