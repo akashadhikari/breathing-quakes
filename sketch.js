@@ -1,21 +1,20 @@
 var mapimg;
 
-//base longitude latitude
 var clat=0;
 var clon=0;
 
 //27.7172° N, 85.3240° E
-var lat= 0;
-var lon= 0;
+var lat= 27.7172;
+var lon= 85.3240;
 
 var zoom=1;
 
-var earthquakes;
-
 function preload() {
-	mapimg= loadImage('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/static/0,0,1,0,0/1024x512?access_token=pk.eyJ1IjoiYWthc2hhZGhpa2FyaSIsImEiOiJjaXpkemZ6dDEyODdiMnFwOXlrOTAzeWZxIn0.jqawgQSE-GrEe1GH7axGwQ');
-	earthquakes= loadStrings('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv');
+	mapimg= loadImage('https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/85.3240,27.7172,10,0,0/1024x512?access_token=pk.eyJ1IjoiYWthc2hhZGhpa2FyaSIsImEiOiJjaXpkemZ6dDEyODdiMnFwOXlrOTAzeWZxIn0.jqawgQSE-GrEe1GH7axGwQ');
 }
+
+
+//function mercX and mercY are based on web mercrator formula
 
 function mercX(lon) {
 	lon = radians(lon);
@@ -41,28 +40,9 @@ function setup() {
 	var cx = mercX(clon);
 	var cy = mercY(clat);
 
-	for (var i=0; i<earthquakes.length; i++) {
-		var data = earthquakes[i].split(/,/);
-		//console.log(data);
+	var x = mercX(lon) - cx;
+	var y = mercY(lat) - cy;
 
-		var lat = data[1];
-		var lon = data[2];
-		var mag = data[4];
-
-		var x = mercX(lon) - cx;
-		var y = mercY(lat) - cy;
-
-		if(data[4]<6.5) {
-
-			fill(0,128,0, 200); //green
-			ellipse(x,y,5,5);
-
-		} else {
-
-			fill(255,0,0, 200); //red for magnitude more than 6
-			ellipse(x,y,25,25);
-		}
-
-	}
-
+	fill(255,0,255, 200);
+	ellipse(x,y,20,20);
 }
