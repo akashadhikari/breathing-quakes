@@ -47,19 +47,19 @@ function setup() {
 
 		var lat = data[1];
 		var lon = data[2];
-		var mag = data[4];
+		var mag = data[4]; // magnitude data from csv
 
 		var x = mercX(lon) - cx;
 		var y = mercY(lat) - cy;
 
-		if(data[4]<6.5) {
+		if(mag<6.5) {
 
 			fill(0,128,0, 200); //green
 			ellipse(x,y,5,5);
 
 		} else {
 
-			fill(255,0,0, 200); //red for magnitude more than 6
+			fill(255,0,0, 200); //red for magnitude more than 6.5
 			ellipse(x,y,25,25);
 		}
 
